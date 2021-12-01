@@ -1,0 +1,185 @@
+<html>
+<body>
+<style>
+/* reset */
+* {
+margin: 0; padding: 0;
+font-family: Arial;
+}
+/* footer's line */
+.footer {
+bottom: 0;
+width: 100%;
+position: fixed;
+background-color: #F5F5F5;
+border: 1px solid #e0e0e0;
+font-size: 0.8em;
+font-weight: bold;
+}
+/* header's line */
+.header {
+top: 0;
+width: 100%;
+position: fixed;
+font-size: 0.8em;
+background-color: #F5F5F5;
+border: 1px solid #e0e0e0;
+padding-bottom: 3px;
+}
+/* style for enter button */
+.enter {
+background-color: #1E90FF;
+height: 27px;
+width: 85px;
+border: 0;
+text-align: center;
+font-weight: bold;
+color: gray;
+border-radius: 2px;
+cursor: pointer;
+}
+/* cell near enter button */
+.cell {
+margin-top: 4px;
+}
+/* search input and button */
+.search_form {
+height: 27px;
+width: 590px;
+text-align: left;
+font-size: 1em;
+margin-top: 8px;
+padding: 6px 0px 4px 10px;
+border: 1px solid #e0e0e0;
+}
+.search_btn {
+background-color: #1E90FF;
+height: 39px;
+width: 41px;
+border-radius: 0 3px 3px 0;
+margin-top: 8px;
+}
+/* header's and footer's links */
+ul {
+list-style-type: none;
+}
+.ul_header > .right_links > a > .enter {
+color: white;
+}
+.footer li a {
+display: block;
+text-decoration: none;
+color: gray;
+opacity: 1.0;
+padding: 15px;
+font-weight: normal;
+}
+.footer li a:hover {
+opacity: 0.9;
+color: black;
+}
+.left_links {
+float: left;
+}
+.right_links {
+float: right;
+}
+.google_logo {
+margin: 7px 17px 0px 7px;
+}
+.right_corner {
+  padding: 15px 25px 15px 0px;
+}
+/* All Images Video etc MENU */
+.extra_menu {
+top: 57px;
+width: 100%;
+position: fixed;
+font-size: 0.8em;
+background-color: white;
+border: 1px solid #e0e0e0;
+}
+.extra_menu li a {
+display: block;
+text-decoration: none;
+color: gray;
+opacity: 1.0;
+padding: 15px;
+font-weight: normal;
+}
+.extra_menu li a:hover {
+opacity: 0.9;
+color: black;
+}
+.left_corner {
+  padding-left: 125px;
+}
+/*result set*/
+.result {
+  top: 120px;
+  position: absolute;
+  padding-left: 145px;
+}
+.count {
+  color: gray;
+  font-size: small;
+}
+.set {
+}
+.set a {
+  font-size: large;
+  color: #0000CD;
+  text-decoration: none;
+}
+.set a:hover {
+  text-decoration: underline;
+}
+.url {
+  color: #6B8E23;
+  font-size: 0.9em;
+}
+p {
+  width: 600px;
+/*  margin-bottom: 50px;*/
+}
+.explntn {
+  font-size: small;
+}
+</style>
+
+
+
+<div class="header">
+  <ul class="ul_header"> 
+
+    <li class="right_links right_corner"><a target="" href="ui"><button class="enter">Home</button></a></li>
+  </ul>
+</div>
+
+<div class="result">
+<h1> Search Results </h1>
+<div style="align=center">
+  <p class="count">Retrived in less than 0.5s</p><br>
+
+{% for paper in xx %}
+
+  <p class="set">
+    
+    <a href="{{paper[0]}}">{{paper[1]}}</a><br>
+<span class="url">{{paper[0]}}</span><br>
+<span class="explntn">This paper is titled {{paper[1]}} | Author : {{paper[2]}}</span> <br>
+<span class="explntn">Abstract : {{paper[3]}}</span>
+<br>
+
+<form action="similar/{{paper[1]}}" method="POST">
+    <input type="hidden" name="similarquery" value="val" />
+    <a href="similar/{{paper[1]}}" onclick="similar/{{paper[1]}}">See Similar Papers</a>
+    </form>
+     </p><br>
+
+{% endfor %}
+
+
+</div>
+</body>
+</html>
